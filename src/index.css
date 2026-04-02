@@ -1,34 +1,21 @@
-:root {
-  --bg-deep: #050a15;
-  --bg-surface: rgba(10, 25, 50, 0.7);
-  --bg-glass: rgba(15, 32, 64, 0.4);
-  
-  --text-main: #e0eafc;
-  --text-dim: #94a3b8;
-  
-  --neon-cyan: #00f3ff;
-  --neon-magenta: #ff00ff;
-  --neon-yellow: #fff700;
-  
-  --border-cyan: rgba(0, 243, 255, 0.3);
-  --border-magenta: rgba(255, 0, 255, 0.3);
-  
-  --glow-cyan: 0 0 10px rgba(0, 243, 255, 0.4);
-  --glow-magenta: 0 0 10px rgba(255, 0, 255, 0.4);
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap');
 
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+:root {
+  --skii-red: #EA0429;
+  --skii-black: #1A1A1A;
+  --skii-white: #FFFFFF;
+  --skii-gray: #F5F5F5;
+  --skii-text: #333333;
+  --skii-text-light: #666666;
   
-  font-family: var(--sans);
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+  
+  font-family: var(--font-sans);
   line-height: 1.6;
   font-weight: 400;
-
-  color: var(--text-main);
-  background-color: var(--bg-deep);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: var(--skii-text);
+  background-color: var(--skii-white);
 }
 
 * {
@@ -39,82 +26,115 @@
 
 body {
   min-height: 100vh;
-  background: radial-gradient(circle at 50% 0%, #0a1931 0%, #050a15 70%);
   overflow-x: hidden;
+  background-color: var(--skii-gray);
 }
 
-/* 玻璃拟态效果 */
-.glass {
-  background: var(--bg-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Typography */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  color: var(--skii-black);
+  letter-spacing: -0.02em;
 }
 
-/* 霓虹按钮 */
-.btn-neon {
-  padding: 10px 24px;
-  background: transparent;
-  color: var(--neon-cyan);
-  border: 1px solid var(--neon-cyan);
-  border-radius: 4px;
-  cursor: pointer;
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Premium Card */
+.skii-card {
+  background: var(--skii-white);
+  border-radius: 0;
+  border-left: 4px solid var(--skii-red);
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skii-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+.btn-skii {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background-color: var(--skii-red);
+  color: var(--skii-white);
+  text-decoration: none;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
   transition: all 0.3s ease;
-  box-shadow: var(--glow-cyan);
+  border: none;
+  cursor: pointer;
 }
 
-.btn-neon:hover {
-  background: var(--neon-cyan);
-  color: var(--bg-deep);
-  box-shadow: 0 0 30px var(--neon-cyan);
+.btn-skii:hover {
+  background-color: var(--skii-black);
+  transform: scale(1.05);
 }
 
-/* 流光文字 */
-.text-gradient {
-  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.btn-outline {
+  background-color: transparent;
+  color: var(--skii-red);
+  border: 1px solid var(--skii-red);
 }
 
-/* 扫描线效果动画 */
-@keyframes scanning {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
+.btn-outline:hover {
+  background-color: var(--skii-red);
+  color: var(--skii-white);
 }
 
-.scanline {
-  position: fixed;
-  top: 0;
+/* Layout Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
   left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--skii-red);
+}
+
+/* Message Board */
+.message-input {
   width: 100%;
-  height: 2px;
-  background: rgba(0, 243, 255, 0.1);
-  opacity: 0.5;
-  z-index: 9999;
-  pointer-events: none;
-  animation: scanning 8s linear infinite;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0;
+  font-family: inherit;
+  margin-bottom: 1rem;
+  outline: none;
 }
 
-/* 滚动条美化 */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-deep);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--bg-glass);
-  border-radius: 4px;
-  border: 1px solid var(--border-cyan);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--neon-cyan);
-  box-shadow: var(--glow-cyan);
+.message-input:focus {
+  border-color: var(--skii-red);
 }
