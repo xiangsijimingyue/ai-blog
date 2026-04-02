@@ -97,7 +97,7 @@ function App() {
             letterSpacing: '4px',
             color: 'var(--skii-red)'
           }}>
-            正义之光 <span style={{ color: '#000', fontSize: '0.8rem', letterSpacing: '1px', verticalAlign: 'middle' }}>JUSTICE FOR ALL</span>
+            诚信之光 <span style={{ color: '#000', fontSize: '0.8rem', letterSpacing: '1px', verticalAlign: 'middle' }}>HONESTY & JUSTICE</span>
           </div>
           <div style={{ display: 'flex', gap: '3rem', fontSize: '0.9rem', color: '#666', textTransform: 'uppercase', letterSpacing: '2px' }}>
             <a href="#expose" style={{ color: 'inherit', textDecoration: 'none' }}>失信曝光</a>
